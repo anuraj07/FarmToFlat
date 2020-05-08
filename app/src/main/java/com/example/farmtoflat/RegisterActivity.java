@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mname, mphone, mflat;
     EditText memail, mpassword, mrepassword;
     Button mcreateAccount;
+    TextView existingUser;
     FirebaseAuth mAuth;
 
     @Override
@@ -35,12 +37,20 @@ public class RegisterActivity extends AppCompatActivity {
         mpassword = findViewById(R.id.password);
         mrepassword = findViewById(R.id.reenterpassword);
         mcreateAccount = findViewById(R.id.register);
+        existingUser = findViewById(R.id.existing_user);
         mAuth = FirebaseAuth.getInstance();
 
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
+
+        existingUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
 
         mcreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
