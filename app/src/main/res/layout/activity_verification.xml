@@ -21,11 +21,6 @@
         android:orientation="horizontal"
         android:padding="15dp">
 
-        <Spinner
-            android:id="@+id/spinnerCountries"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content" />
-
         <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="match_parent"

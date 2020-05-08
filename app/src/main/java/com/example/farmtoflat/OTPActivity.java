@@ -24,11 +24,13 @@ import java.util.concurrent.TimeUnit;
 
 public class OTPActivity extends AppCompatActivity {
 
+
     private String verificationid;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private EditText editText;
     private Button verify;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +77,7 @@ public class OTPActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            Intent intent = new Intent(OTPActivity.this, MainActivity.class);
+                            Intent intent = new Intent(OTPActivity.this, RegisterActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                             startActivity(intent);
@@ -89,7 +91,7 @@ public class OTPActivity extends AppCompatActivity {
     }
 
     private void sendVerificationCode(String number){
-
+        Toast.makeText(getApplicationContext(),"Sending Verification",Toast.LENGTH_LONG).show();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 number,
                 60,
@@ -110,6 +112,7 @@ public class OTPActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+            Toast.makeText(getApplicationContext(),"Verifying code Automatically",Toast.LENGTH_LONG).show();
             String code = phoneAuthCredential.getSmsCode();
             if (code != null){
                 progressBar.setVisibility(View.VISIBLE);
