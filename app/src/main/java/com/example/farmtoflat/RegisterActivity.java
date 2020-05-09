@@ -31,13 +31,13 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registeractivity);
 
         mname = findViewById(R.id.name);
-        mphone = findViewById(R.id.mobile);
+        //mphone = findViewById(R.id.mobile);
         mflat = findViewById(R.id.flat);
-        memail = findViewById(R.id.email);
-        mpassword = findViewById(R.id.password);
-        mrepassword = findViewById(R.id.reenterpassword);
+        //memail = findViewById(R.id.email);
+        //mpassword = findViewById(R.id.password);
+        //mrepassword = findViewById(R.id.reenterpassword);
         mcreateAccount = findViewById(R.id.register);
-        existingUser = findViewById(R.id.existing_user);
+        //existingUser = findViewById(R.id.existing_user);
         mAuth = FirebaseAuth.getInstance();
 
         if (mAuth.getCurrentUser() != null) {
@@ -45,12 +45,12 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
 
-        existingUser.setOnClickListener(new View.OnClickListener() {
+        /*existingUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
-        });
+        });*/
 
         mcreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +61,10 @@ public class RegisterActivity extends AppCompatActivity {
 //                String email = memail.getText().toString();
 
 
-                if (!mpassword.getText().toString().equals(mrepassword.getText().toString())) {
+                /*if (!mpassword.getText().toString().equals(mrepassword.getText().toString())) {
                     Toast.makeText(com.example.farmtoflat.RegisterActivity.this, "Password do no match", Toast.LENGTH_LONG).show();
                     return;
-                }
+                }*/
 
                 if (mname.getText().toString().isEmpty()) {
                     Toast.makeText(com.example.farmtoflat.RegisterActivity.this, "Name can't be empty", Toast.LENGTH_LONG).show();
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (mflat.getText().toString().isEmpty()) {
                     Toast.makeText(com.example.farmtoflat.RegisterActivity.this, "Flat can't be empty", Toast.LENGTH_LONG).show();
                     return;
-                } else if (mphone.getText().toString().isEmpty()) {
+                } /*else if (mphone.getText().toString().isEmpty()) {
                     Toast.makeText(com.example.farmtoflat.RegisterActivity.this, "MobileNo. can't be empty", Toast.LENGTH_LONG).show();
                     return;
                 } else if (memail.getText().toString().isEmpty()) {
@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 } else if (mrepassword.getText().toString().length() < 6) {
                     Toast.makeText(com.example.farmtoflat.RegisterActivity.this, "Password should be of 6 characters minimum", Toast.LENGTH_LONG).show();
-                } else {
+                }*/ else {
 
                     mAuth.createUserWithEmailAndPassword(memail.getText().toString(), mpassword.getText().toString())
                             .addOnCompleteListener(com.example.farmtoflat.RegisterActivity.this, new OnCompleteListener<AuthResult>() {
